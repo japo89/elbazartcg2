@@ -1,0 +1,94 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222; /* Fondo oscuro para que resalte */
+    font-family: Arial, sans-serif;
+}
+
+.gachapon-container {
+    text-align: center;
+}
+
+/* Estilo de la máquina */
+.machine {
+    width: 300px;
+    height: 400px;
+    background-color: #ff4d4d; /* Color rojo típico de gachapon */
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo de la bola */
+.ball {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -60px; /* Fuera de la vista inicialmente */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 5s ease-in-out; /* Animación suave de 5 segundos */
+}
+
+/* Estado de la bola cuando cae */
+.ball.active {
+    top: 300px; /* Posición final al caer */
+}
+
+/* Pantalla del premio */
+.prize-display {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #000;
+}
+
+/* Botón de girar */
+#spin-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#spin-button:hover {
+    background-color: #45a049;
+}
+
+/* Agregar un fondo transparente para OBS */
+body {
+    background-color: transparent; /* Cambia de #222 a transparente */
+}
+
+/* Efecto de rebote en la bola */
+@keyframes bounce {
+    0% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -20px); }
+    100% { transform: translate(-50%, 0); }
+}
+
+.ball.active {
+    top: 300px;
+    animation: bounce 0.5s ease infinite; /* Rebote al llegar abajo */
+}
+
+/* Ocultar el botón en producción (ya que Twitch lo activará) */
+#spin-button {
+    display: none; /* Comentar esta línea si sigues probando localmente */
+}
